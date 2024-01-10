@@ -1,6 +1,10 @@
+#include "PluginManager.h"
+
 #include <iostream>
+
 
 int main()
 {
-    std::cout << "hello world" << std::endl;
+    std::cout << "[APP] Loading Plugins for testing" << std::endl;
+    app::Pluginmanager::LoadPlugins();
 }

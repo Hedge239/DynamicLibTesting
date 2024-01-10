@@ -4,7 +4,8 @@
 namespace app {
     class Pluginmanager
     {
-        static void LoadPlugins();
+        public:
+            static void LoadPlugins();
     };
 }
 
