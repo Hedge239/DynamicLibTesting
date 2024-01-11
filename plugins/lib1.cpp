@@ -4,6 +4,9 @@
 
 class lib1 : public PluginInterface
 {
+    private:
+        std::function<void(const std::string&)> Callback;
+
     public:
         // Plugin Info
         const std::string& GetPluginName() const override
@@ -30,8 +33,17 @@ class lib1 : public PluginInterface
 
         void DoSomethingElse() const override
         {
-           std::cout << "[Lib1] *Wip noises*" << std::endl;
+           if(Callback)
+           {
+                Callback("Fancy wip noises");
+           }
         }
+
+        void SetTestCallback(std::function<void(const std::string&)> TestCallback) override 
+        {
+            Callback = TestCallback;
+        }
+
 };
 
 extern "C" PluginInterface* CreatePluginInstance()

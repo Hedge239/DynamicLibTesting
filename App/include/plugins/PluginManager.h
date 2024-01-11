@@ -17,6 +17,7 @@ namespace app
             // Plugin Functions
             static void pmDoSomething();
             static void pmDoSomethingElse();
+            static void pmSetCallBack();
         };
     }
 }

@@ -2,6 +2,7 @@
 #define _PLUGININTERFACE_H_
 
 #include <string>
+#include <functional>
 
 class PluginInterface
 {
@@ -14,6 +15,9 @@ class PluginInterface
     // Functions
     virtual void DoSomething() const {}
     virtual void DoSomethingElse() const {}
+
+    // Call Back
+    virtual void SetTestCallback(std::function<void(const std::string&)> TestCallback) {}
 };
 
 // Instance Creation & Destruction

@@ -8,6 +8,7 @@ int main()
 
     std::cout << "[App] Where there a wip," << std::endl;
 
+    app::plugins::manager::pmSetCallBack();
     app::plugins::manager::pmDoSomething();
     app::plugins::manager::pmDoSomethingElse();
 

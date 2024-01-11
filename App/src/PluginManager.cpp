@@ -75,6 +75,11 @@ void app::plugins::manager::UnloadLoadedPlugins()
     app::plugins::loader::UnloadPlugins();
 }
 
+void TestCallBackReturn(const std::string& message)
+{
+    std::cout << "[Plugin Log] " << message << std::endl;
+}
+
 // Plugin Functions
 
 void app::plugins::manager::pmDoSomething()
@@ -98,6 +103,15 @@ void app::plugins::manager::pmDoSomethingElse()
         //std::cout << "Plugin Version: " << plugin->GetPluginVersion() << std::endl;
         //std::cout << "Plugin Repo: " << plugin->etPluginVersion() << std::endl;
         plugin->DoSomethingElse();
+    }
+}
+
+void app::plugins::manager::pmSetCallBack()
+{
+    const auto& loadedPlugins = app::plugins::loader::GetLoadedPlugins();
+
+    for (const auto& plugin : loadedPlugins) {
+        plugin->SetTestCallback(TestCallBackReturn);
     }
 }
 
