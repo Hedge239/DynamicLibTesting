@@ -33,7 +33,7 @@
 
     void UnloadLib(void* LibHandel)
     {
-        dlclose(LibHandle);
+        dlclose(LibHandel);
     }
 
     void* GetFunctionPointer(void* LibHandel, const char* FuncName)

@@ -10,8 +10,7 @@
 #ifdef _WIN32
     const bool IsWindows = true;
 #elif __linux__
-else
-    // Continue adding for other display services
+    const bool IsWindows = false;
 #endif
 
 
@@ -20,11 +19,11 @@ void app::plugins::manager::LoadPluginsFromFile()
     // Validate that plugin.ini exist
     std::cout << "[PLUGIN MANAGER] Searching For Plugin.ini" << std::endl;
 
-    if(!std::filesystem::exists("plugins\\plugin.ini"))
+    if(!std::filesystem::exists("plugins/plugin.ini"))
     {
         std::ofstream c_pluginlist;
         std::filesystem::create_directory("plugins");
-        c_pluginlist.open("plugins\\plugin.ini");
+        c_pluginlist.open("plugins/plugin.ini");
         c_pluginlist.close();
 
         std::cout << "[PLUGIN MANAGER] Faild to locate plugin.ini, creating" << std::endl;
@@ -35,7 +34,7 @@ void app::plugins::manager::LoadPluginsFromFile()
     std::ifstream pluginListFile;
     std::vector<std::string> pluginList;
 
-    pluginListFile.open("plugins\\plugin.ini");
+    pluginListFile.open("plugins/plugin.ini");
     std::cout << "[PLUGIN MANAGER] Reading Plugin.ini" << std::endl;
 
     if(pluginListFile.is_open())
