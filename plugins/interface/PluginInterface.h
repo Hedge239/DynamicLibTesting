@@ -11,8 +11,8 @@ class PluginInterface {
     virtual const std::string& GetPluginRepo() const = 0; // Disabled by default for security reasons (In actual project)
 
     // Functions
-    virtual void DoSomething() const = 0;
-    virtual void DoSomethingElse() const = 0;
+    virtual void DoSomething() const {}
+    virtual void DoSomethingElse() const {}
 };
 
 // Instance Creation & Destruction

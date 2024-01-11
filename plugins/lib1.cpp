@@ -30,7 +30,7 @@ class lib1 : public PluginInterface
 
         void DoSomethingElse() const override
         {
-            std::cout << "[Lib1] *Wip noises*" << std::endl;
+           std::cout << "[Lib1] *Wip noises*" << std::endl;
         }
 };
 

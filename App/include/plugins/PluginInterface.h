@@ -12,8 +12,8 @@ class PluginInterface
     virtual const std::string& etPluginVersion() const = 0;
 
     // Functions
-    virtual void DoSomething() const = 0;
-    virtual void DoSomethingElse() const = 0;
+    virtual void DoSomething() const {}
+    virtual void DoSomethingElse() const {}
 };
 
 // Instance Creation & Destruction
