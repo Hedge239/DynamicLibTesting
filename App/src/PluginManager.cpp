@@ -1,4 +1,5 @@
-#include <PluginManager.h>
+#include <plugins/PluginManager.h>
+#include <plugins/PluginLoader.h>
 
 #include <iostream>
 #include <filesystem>
@@ -7,7 +8,6 @@
 #include <string>
 
 #ifdef _WIN32
-    #include "windows.h"
     const bool IsWindows = true;
 #elif __linux__
 else
@@ -15,7 +15,7 @@ else
 #endif
 
 
-void app::Pluginmanager::LoadPlugins()
+void app::plugins::manager::LoadPluginsFromFile()
 {
     // Validate that plugin.ini exist
     std::cout << "[PLUGIN MANAGER] Searching For Plugin.ini" << std::endl;
@@ -52,10 +52,10 @@ void app::Pluginmanager::LoadPlugins()
             // This is yet another horrible function, makeing this another problem for future me
             if(IsWindows)
             {
-                line = line + ".dll";
+                line = "plugins/" + line + ".dll";
             }else
             {
-                line = line + ".so";
+                line = "plugins/" + line + ".so";
             };
 
             std::cout << "[PLUGIN MANAGER] Found: " + line << std::endl;
@@ -68,4 +68,38 @@ void app::Pluginmanager::LoadPlugins()
     }
 
     // Load Plugins
+    app::plugins::loader::LoadPlugins(pluginList);
 }
+
+void app::plugins::manager::UnloadLoadedPlugins()
+{
+    app::plugins::loader::UnloadPlugins();
+}
+
+// Plugin Functions
+
+void app::plugins::manager::pmDoSomething()
+{
+    const auto& loadedPlugins = app::plugins::loader::GetLoadedPlugins();
+
+    for (const auto& plugin : loadedPlugins) {
+        //std::cout << "Plugin name: " << plugin->GetPluginName() << std::endl;
+        //std::cout << "Plugin Version: " << plugin->GetPluginVersion() << std::endl;
+        //std::cout << "Plugin Repo: " << plugin->etPluginVersion() << std::endl;
+        plugin->DoSomething();
+    }
+}
+
+void app::plugins::manager::pmDoSomethingElse()
+{
+    const auto& loadedPlugins = app::plugins::loader::GetLoadedPlugins();
+
+    for (const auto& plugin : loadedPlugins) {
+        //std::cout << "Plugin name: " << plugin->GetPluginName() << std::endl;
+        //std::cout << "Plugin Version: " << plugin->GetPluginVersion() << std::endl;
+        //std::cout << "Plugin Repo: " << plugin->etPluginVersion() << std::endl;
+        plugin->DoSomethingElse();
+    }
+}
+
+

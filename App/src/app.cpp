@@ -1,10 +1,18 @@
-#include "PluginManager.h"
+#include <plugins/PluginManager.h>
 
 #include <iostream>
 
-
 int main()
 {
-    std::cout << "[APP] Loading Plugins for testing" << std::endl;
-    app::Pluginmanager::LoadPlugins();
+    app::plugins::manager::LoadPluginsFromFile();
+
+    std::cout << "[App] Where there a wip," << std::endl;
+
+    app::plugins::manager::pmDoSomething();
+    app::plugins::manager::pmDoSomethingElse();
+
+    std::string userInput;
+    std::getline(std::cin, userInput);
+    
+    app::plugins::manager::UnloadLoadedPlugins();
 }
