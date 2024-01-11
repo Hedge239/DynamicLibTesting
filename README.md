@@ -1,5 +1,4 @@
-Place where i am using to learn how to use DynamicLibs (after the test faild on a different project), feel free to refrence this to do it on you own project.
-will not stop until it supports both Linux and Windows
+Place that I am using to test and refrence Dynamics librarys for C++ (.lib & .so), feel free to use as a refrence for your own project
 
 ### Update: Now fully working, exception is when using the provided CMakeLists.txt file. You may have to change dir files are made in & if using VSCode, run BUILD before DEBUG so the DLL build
 
